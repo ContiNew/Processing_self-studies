@@ -7,17 +7,21 @@ float barSpeed = 10;
 float ballSpeedX = 2;
 float ballSpeedY = 2;
 
+int score = 0;
+
 void setup(){
   size(400,400);
   rectPosY = height*0.8;
   circlePosX = width/2;
   circlePosY = height*0.2;
   ellipseMode(CENTER);
-  
+  textSize(30);
 }
 
 void draw(){
   background(0);
+  text("score", 40, 40);
+  text(str(score),40,70);
   ellipse(circlePosX, circlePosY,15,15);
   rect(rectPosX, rectPosY, 60, 10);
   checkIntersection();
@@ -45,6 +49,7 @@ void checkIntersection(){
   }
   else if(rectPosY == circlePosY+15 && circlePosX > rectPosX-15 && circlePosX <= rectPosX+75 ){
     ballSpeedY *= -1; // 3. bar로 공을 맞추는 상황
+    score += 1;
   }
 }
 
